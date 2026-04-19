@@ -1,0 +1,4 @@
+s=input()
+ascii=[(ord(i)-7) for i in s]
+ans="".join(chr(i) for i in ascii)
+print(ans)
