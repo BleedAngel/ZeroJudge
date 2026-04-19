@@ -1,0 +1,15 @@
+n=int(input())
+i,s=2,[]
+while(i<=(n**0.5)):
+  t=0
+  while(n%i==0):
+    t+=1
+    n//=i
+  if(t!=0):
+    s.append([i,t])
+  i+=1
+if(n!=1):
+  s.append([n,1])
+lst1=[("^".join(map(str,i)) if(i[-1]>1) else str(i[0])) for i in s]
+lst2=" * ".join(lst1)
+print(lst2)
