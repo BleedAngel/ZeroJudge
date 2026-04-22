@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int k;
+    cin>>k;
+    vector<vector<int>> lst(k);
+    
+    cin.ignore();
+    string line;
+    for(int i=0;i<k;i++){
+        getline(cin,line);
+        stringstream ss(line);
+        int num;
+        while(ss>>num){
+            lst[i].push_back(num);
+        }
+    }
+    for(int i=0;i<k;i++){
+        for(int j=0;j<2;j++){
+            cout<<lst[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+}
