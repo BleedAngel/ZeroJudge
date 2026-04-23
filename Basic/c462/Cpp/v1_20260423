@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int k;
+    string s;
+    cin>>k>>s;
+    int t=0,idx=0;
+    vector<int> ans(1,0);
+    bool isLower=islower(s[0]),x=true;
+    for(char i:s){
+        if(isLower==islower(i)){
+            t++;
+        }
+        else{
+            if(x && t>=k){
+                x=false;
+                ans[idx]+=k;
+                
+            }
+            else if(!x){
+                if(t==k){
+                    ans[idx]+=k;
+                }
+                else{
+                    if(t>k){
+                        ans[idx]+=k;
+                    }
+                    idx++;
+                    ans.push_back(0);
+                    continue;
+                }
+            }
+            isLower=islower(i);
+            t=1;
+        }
+    }
+    //cout<<ans.size()<<"\n";
+    cout<<*max_element(ans.begin(),ans.end())<<"\n";
+}
