@@ -7,9 +7,16 @@ int main() {
     cin>>k>>s;
     int t=0,idx=0;
     vector<int> ans(1,0);
-    bool isLower=islower(s[0]),x=true;
+    bool isLower=islower(s[0]),x=true,end=islower(s.back());
+    if(end){
+        s+='A';
+    }
+    else{
+        s+='a';
+    }
     for(char i:s){
-        if(isLower==islower(i)){
+        bool isLower_i=islower(i);
+        if(isLower==isLower_i){
             t++;
         }
         else{
@@ -31,10 +38,9 @@ int main() {
                     continue;
                 }
             }
-            isLower=islower(i);
+            isLower=isLower_i;
             t=1;
         }
     }
-    //cout<<ans.size()<<"\n";
     cout<<*max_element(ans.begin(),ans.end())<<"\n";
 }
