@@ -16,10 +16,22 @@ int main() {
             lst[i].push_back(num);
         }
     }
+    int error=0;
     for(int i=0;i<k;i++){
-        for(int j=0;j<2;j++){
-            cout<<lst[i][j]<<" ";
+        if(lst[i][1]==-1){
+            error++;
         }
-        cout<<"\n";
     }
+    auto ma=max_element(
+        lst.begin(),
+        lst.end(),
+        [](const vector<int>& a,const vector<int>& b){
+            return a[1]<b[1];
+        }
+    );
+    int score=(*ma)[1]-k-error*2;
+    if(score<0){
+        score=0;
+    }
+    cout<<score<<" "<<(*ma)[0];
 }
