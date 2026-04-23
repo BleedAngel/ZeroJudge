@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int a,b,x;
+    cin>>a>>b>>x;
+    if(a==0 && b==0){
+        if(x==0){
+            cout<<"AND\nOR\nXOR";   
+        }
+        else{
+            cout<<"IMPOSSIBLE";
+        }
+    }
+    else if((a==0 && b!=0) || (a!=0 && b==0)){
+        if(x==0){
+            cout<<"AND";
+        }
+        else{
+            cout<<"OR\nXOR";
+        }
+    }
+    else{
+        if(x==0){
+            cout<<"XOR";
+        }
+        else{
+            cout<<"AND\nOR";
+        }
+    }
+}
