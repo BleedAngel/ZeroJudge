@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    vector<vector<int>> s(n,vector<int>(m));
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>s[i][j];
+        }
+    }
+    int ans=0;
+    bool f=true;
+    while(f){
+        f=false;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(s[i][j]>=0){
+                    int v=s[i][j];
+                    for(int k=j+1;k<m;k++){
+                        if(s[i][k]==-1){
+                            continue;
+                        }
+                        if(s[i][k]==v){
+                            ans+=v;
+                            s[i][j]=s[i][k]=-1;
+                            f=1;
+                        }
+                        break;
+                    }
+                    for(int k=i+1;k<n;k++){
+                        if(s[k][j]==-1){
+                            continue;
+                        }
+                        if(s[k][j]==v){
+                            ans+=v;
+                            s[i][j]=s[k][j]=-1;
+                            f=1;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    cout<<ans;
+}
