@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n,m;
+    cin>>n>>m;
+    int ans=0;
+    vector<int> s(m,0);
+    vector<int> nums(n);
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>s[j];
+        }
+        int ma=*max_element(s.begin(),s.end());
+        ans+=ma;
+        nums[i]=ma;
+    }
+    cout<<ans<<"\n";
+    bool x=true,idx=false;
+    for(int i=0;i<n;i++){
+        if(ans%nums[i]==0){
+            if(idx){
+                cout<<" ";
+            }
+            cout<<nums[i];
+            x=false;
+            idx=true;
+        }
+    }
+    if(x){
+        cout<<-1;
+    }
+}
