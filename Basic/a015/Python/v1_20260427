@@ -1,0 +1,10 @@
+while True:
+  try:
+    n,m=map(int,input().split())
+    s=[]
+    for i in range(n):
+      s.append([*map(int,input().split())])
+    for i in range(m):
+      print(*[j[i]for j in s])
+  except:
+    break
