@@ -1,0 +1,11 @@
+while True:
+  try:
+    n=int(input())
+    for i in range(n):
+      s=input()
+      ans=1
+      for j in s:
+        ans*=int(j)
+      print(ans)
+  except:
+    break
