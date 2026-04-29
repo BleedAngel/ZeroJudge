@@ -1,0 +1,9 @@
+from datetime import date
+while True:
+  try:
+    start=date(*map(int,input().split()))
+    end=date(*map(int,input().split()))
+    delta=abs(end-start)
+    print(delta.days)
+  except:
+    break
