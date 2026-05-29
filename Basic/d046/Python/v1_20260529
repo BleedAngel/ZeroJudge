@@ -1,0 +1,13 @@
+#輸入
+n=int(input())
+lst=map(int,input().split())
+
+#初始化
+ans=0
+
+for i in lst:
+  if(i<=10):
+    ans+=1
+
+#輸出
+print(ans)
