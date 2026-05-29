@@ -2,45 +2,57 @@
 using namespace std;
 
 int main() {
+    
+    //輸入
     int k;
     string s;
     cin>>k>>s;
-    int t=0,idx=0;
-    vector<int> ans(1,0);
-    bool isLower=islower(s[0]),x=true,end=islower(s.back());
-    if(end){
-        s+='A';
-    }
-    else{
-        s+='a';
-    }
+    
+    //初始化_1
+    int t=0;
+    vector<int> lst;
+    bool isLower=islower(s[0]);
+    
+    //字串結尾
+    bool end=islower(s.back());
+    s += end ? 'A':'a';
+    
+    //將字串壓縮為連續大小寫的長度陣列
     for(char i:s){
         bool isLower_i=islower(i);
-        if(isLower==isLower_i){
-            t++;
-        }
+        if(isLower==isLower_i){t++;}
         else{
-            if(x && t>=k){
-                x=false;
-                ans[idx]+=k;
-                
-            }
-            else if(!x){
-                if(t==k){
-                    ans[idx]+=k;
-                }
-                else{
-                    if(t>k){
-                        ans[idx]+=k;
-                    }
-                    idx++;
-                    ans.push_back(0);
-                    continue;
-                }
-            }
             isLower=isLower_i;
+            lst.push_back(t);
             t=1;
         }
     }
-    cout<<*max_element(ans.begin(),ans.end())<<"\n";
+    
+    //初始化_2
+    bool x=true;
+    t=0;
+    vector<int> ans;
+    
+    for(int i:lst){
+        
+        //首次符合次數條件
+        if(x && i>=k){
+            t+=k,x=false;
+        }
+        
+        else if(!x){
+            if(i==k){t+=i;}
+            else{
+                if(i>k){t+=k;}
+                ans.push_back(t);
+                if(i>=k){t=k;}
+                else{t=0;}
+                x=true;
+            }
+        }
+    }
+    
+    //輸出
+    if(ans.size()==0){cout<<0;}
+    else{cout<<*max_element(ans.begin(),ans.end());}
 }
